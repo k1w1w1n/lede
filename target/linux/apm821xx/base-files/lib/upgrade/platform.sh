@@ -1,5 +1,3 @@
-#!/bin/sh
-
 PART_NAME=firmware
 REQUIRE_IMAGE_METADATA=1
 
@@ -22,7 +20,7 @@ platform_do_upgrade() {
 
 	case "$board" in
 	wd,mybooklive)
-		mbl_do_upgrade "$ARGV"
+		mbl_do_upgrade "$1"
 		;;
 	meraki,mr24|\
 	meraki,mx60|\
@@ -32,7 +30,7 @@ platform_do_upgrade() {
 		nand_do_upgrade "$1"
 		;;
 	*)
-		default_do_upgrade "$ARGV"
+		default_do_upgrade "$1"
 		;;
 	esac
 }
@@ -44,9 +42,6 @@ platform_copy_config() {
 	wd,mybooklive|\
 	wd,mybooklive-duo)
 		mbl_copy_config
-		;;
-
-	*)
 		;;
 	esac
 }
